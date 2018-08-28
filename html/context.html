@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="EUC-KR">
+    <title>Insert title here</title>
+</head>
+<body>
+Global Variable Object : 실행 컨텍스트에 관련된 데이터의 "범위" <br>
+<script>
+    var foo = 10;
+    function bar(){}  //함수 정의(function declaration, FD)
+    (function baz(){});  //함수 식(function expression, FE)
+
+    console.log(
+        this.foo == foo,  //true
+        window.bar == bar  //true
+        , window.foo == foo
+    );
+    console.log(baz); //error
+
+</script>
+함수 컨텍스트는 함수 호출시에 생성되고, 함수 컨텍스트의 관련된 데이터의 "범위"를 관리하는 객체 Activation Object도 생성됩니다.<br>
+<script>
+    function foo(x, y){
+        var z = 30;
+        function bar(){}  //FD(함수의 정의)
+        (function baz(){});  //FE(함수 표현식)
+    }
+    console.dir(foo(10, 20));
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="EUC-KR">
+    <title>Insert title here</title>
+</head>
+<body>
+생성자객체와 생성자객체의 prototype객체<br>
+<script>
+    function Foo(y){
+        this.y = y;
+    }
+    //"Foo.prototype"은 새로 생성되는 객체의 프로토타입에 대한 참조
+    //"Foo.prototype"에 공유와 상속 메소드를 정의할 수 있습니다.
+    Foo.prototype.x = 10;
+    Foo.prototype.calculrate = function(z){
+        return this.x + this.y + z;
+    }
+    //생성자를 이용, 객체 생성
+    var b = new Foo(20);
+    var c = new Foo(30);
+    //상속된 메소드를 호출합니다.
+    b.calculrate(30);
+    c.calculrate(40);
+
+    console.log(
+        b.__proto__ === Foo.prototype, //true
+        c.__proto__ === Foo.prototype, //true
+
+        //"Foo.prototype" 도특별한 프로퍼티 "constructor" 를 가진다
+        // (Foo.prototype.constructor)은 생성자 함수 자체에 대한 참조
+        //인스턴스 "b" 및 "c" 는 위임되어 이 속성을 참조하여 자신의 생성자를 확인
+
+        b.constructor === Foo,
+        c.constructor === Foo,
+        Foo.prototype.constructor === Foo,
+
+        b.calculrate === b.__proto__.calculrate,
+        b.__proto__.calculrate === Foo.prototype.calculrate
+    );
+
+    console.dir(Foo);
+    console.dir(b);
+</script>
+</body>
+</html>
