@@ -25,6 +25,8 @@ Global Variable Object : 실행 컨텍스트에 관련된 데이터의 "범위" <br>
         var z = 30;
         function bar(){}  //FD(함수의 정의)
         (function baz(){});  //FE(함수 표현식)
+        console.log(arguments[0] == x);
+        console.log(arguments[1] == y);
     }
     console.dir(foo(10, 20));
 </script>
