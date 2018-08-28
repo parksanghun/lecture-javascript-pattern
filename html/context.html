@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,10 +26,22 @@ Global Variable Object : 실행 컨텍스트에 관련된 데이터의 "범위" <br>
         var z = 30;
         function bar(){}  //FD(함수의 정의)
         (function baz(){});  //FE(함수 표현식)
-        console.log(arguments[0] == x);
-        console.log(arguments[1] == y);
+        console.log(arguments[0]==x,
+            arguments[1]==y);
     }
-    console.dir(foo(10, 20));
+
+    foo(10, 20);
+    console.dir(foo);
+
+    var x = 10;	 //Global Variable Object에 저장됨
+    (function foo(){
+        var y = 20;   //foo함수 컨텍스트의 Activation Object에 저장됨
+        (function bar(){   //bar 함수 컨텍스트의 Activation Object에 z가 저장됨
+            var z = 30;
+            //"x"와 "y"는 "자유변수"
+            console.log(x+y+z);
+        })();  //즉시 실행함수 패턴
+    })();
 </script>
 </body>
 </html>

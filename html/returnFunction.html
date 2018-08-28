@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="EUC-KR">
+    <title>Insert title here</title>
+</head>
+<body>
+<script>
+    function outer(){
+        function inner(){
+
+        }
+        inner();
+    }
+
+    function outer2(){
+        var local2="local2";
+        return function(){
+            console.log(local2);
+        }
+    }
+    var result = outer2();
+    result(); //
+
+
+    function foo(){
+        var x = 10;
+        return function(){
+            console.log(x);
+        };
+    }
+    //"foo" 함수는 함수를 반환하고 반환된 이 함수는 자유 변수 "x" 를 사용합니다.
+    var returnedFunction = foo();
+    var x = 20;
+    //반환 함수를 실행합니다.
+    returnedFunction();
+
+    var y = 10;
+
+    function foo2(){
+        console.log(y);
+    }
+
+    (function(funArg){
+        var y = 20;
+        var z = 30
+        funArg();   //z가 참조되어지면 동적 scope 이지만, 함수가 정의될때 그 함수의 scope chain 이 결정되므로..오류
+    })(foo2);  //"foo"를 "funarg"로 하향 전달
+
+
+</script>
+</body>
+</html>
