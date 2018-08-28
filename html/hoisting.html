@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="EUC-KR">
+    <title>Insert title here</title>
+</head>
+<body>
+hoisting : 선언함수의 경우, 실행 전에 최상단으로 끌어올려지는 현상<br>
+<script>
+
+    console.log(zero); // 에러가 아니라 undefined, 변수는 사용전에 선언되어야 합니다.
+    sayWow(); // 정상적으로 wow
+    function sayWow() {
+        console.log('wow');
+    }
+    var zero = 'zero';
+    sayYeah(); //  대입되기 전에 호출해서 에러
+    var sayYeah = function() { //  선언 과 대입
+        console.log('yeah');
+    }
+
+</script>
+</body>
+</html>
