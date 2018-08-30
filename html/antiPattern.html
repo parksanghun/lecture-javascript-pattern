@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="EUC-KR">
+    <title>Insert title here</title>
+</head>
+<body>
+<script>
+    var f = function () {
+        return { name: 'j', setName: function () { return this.name } };
+    }
+    //즉시 실행 함수 패턴 - 초기화 작업으로 1번만 실행될때 =>(function () {... })()
+    var $ = (function () {
+        return { name: 'j', setName: function () { return this.name } };
+    })();
+    console.log($.setName()); // j
+
+    (function prototype() {
+        var f = function () {
+            this.name = 'p'
+            return this;
+        };
+        // 암묵적 변수 선언(안티패턴)
+        $ = new f();  //{name:'p'}
+    }());
+
+    alert($.setName()); // undefined
+    alert($.name); // p
+
+</script>
+</body>
+</html>

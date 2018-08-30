@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="EUC-KR">
+    <title>Insert title here</title>
+</head>
+<body>
+<script>
+    //모든 자바스크립트 함수는  가변인수 함수입니다.
+    function sumAll(){
+        console.log(typeof (arguments) +';'+arguments.length );
+        console.log(Array.isArray(arguments));//?
+        // console.log(arguments.isArray()); //배열 객체가 아니므로 오류발생
+        for(var key in arguments){
+            console.log(arguments[key]);
+        }
+    };
+    sumAll(1,2,3,4,5,6,7,8,9);
+
+    /* K씨가 만든 함수 */
+    // 제곱을 구하는 함수
+    function square(x) { return x * x; }
+
+    // 피타고라스 함수
+    function pythagoras(width, height) {
+        return Math.sqrt(square(width) + square(height));
+    }
+
+    // 피타고라스 함수를 호출합니다.
+    console.log("밑변3, 높이 4인 삼각형의 빗변의 길이는 " , pythagoras(3, 4));
+    /* J씨가 만든 함수 */
+    // 삼각형이 직각인지 확인하는 함수
+    function square(width, height, hypotenuse) {  //override되고,
+        if (width * width + height * height == hypotenuse * hypotenuse) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="EUC-KR">
+    <title>Insert title here</title>
+</head>
+<body>
+커링 - call, apply, bind <br>
+<script>
+    var example = function (a, b, c) {
+        return a + b + c;
+    };
+
+    console.log(example(1, 2, 3));
+    console.log(example.call(null, 1, 2, 3)); // 호출될 함수와 동일한 인자를 넣어 호출
+    console.log(example.apply(null, [1, 2, 3])); // 호출될 함수의 인자들을 하나의 배열 인자로 만들어 넣어 호출
+
+    var obj = {
+        string: 'javascript패턴',
+        calling: function() {
+            console.log(this.string);
+        }
+    };
+    var obj2 = {
+        string: 'what?'
+    };
+
+    obj.calling(); //  calling함수 호출시 this는 obj입니다.
+    //obj2.calling() //호출불가
+    obj.calling.call(obj2); //  다른 객체의 함수를 자기 것처럼 사용할 수 있다
+    //calling함수 호출시 this를 call함수가 첫번째 인자인 객체로 바꿔줍니다.
+    obj.calling(); //
+    var calling2 = obj.calling.bind(obj2);
+    console.dir(calling2)
+    calling2();
+
+    var scareMe = function () {
+        alert("Boo!");
+        scareMe = function () {
+            alert ("Zoo!");
+        };
+    };
+
+    scareMe();  // Boo!
+    scareMe();  // Zoo!
+    scareMe();
+</script>
+</body>
+</html>

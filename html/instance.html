@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="EUC-KR">
+    <title>Insert title here</title>
+</head>
+<body>
+<script>
+    var student = {
+        이름: '이순신', 국어: 92, 수학: 98, 영어: 96, 과학: 98
+    };
+    for(var key in student){
+        console.log(key, student[key]);
+    }
+    var array = ['이순신', 92, 98, 96, 98];
+    for(var key in array){
+        console.log(key, array[key]);
+    }
+
+    function Student(name) { this.name = name; }
+    var student = new Student('이순신');
+    console.log(student  instanceof  Student);  //인스턴스 instanceof 타입
+    console.log(student  instanceof  Object);   //인스턴스 isntanceof 부모 타입
+
+
+    var printer = (function () {
+        var printerInstance;
+        function create () {
+            function print() {
+                // underlying printer mechanics
+            }
+            function turnOn() {
+                // warm up
+                // check for paper
+            }
+            return {
+                // public + private states and behaviors
+                print: print,
+                turnOn: turnOn
+            };
+        }  //create end
+        return {
+            getInstance: function() {
+                if(!printerInstance) {
+                    printerInstance = create();
+                }
+                return printerInstance;
+            }
+        };
+
+    })();
+    p1 = printer.getInstance();
+    p2 = printer.getInstance();
+    p3 = printer.getInstance();
+    console.log(Object.is(p1, p2)); //객체 비교
+    console.log(p1==p2);
+    console.log(Object.is(p1, p3)); //객체 비교
+    console.log(p1==p3);
+
+</script>
+</body>
+</html>

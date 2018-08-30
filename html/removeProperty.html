@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="EUC-KR">
+    <title>Insert title here</title>
+</head>
+<body>
+<script>
+    (function () {
+        var days =["Sun", "Mon", "Tue", "Wed", "Thir"];
+        today = new Date();
+        console.log(today)
+        msg = "Today is " + days[today.getDay()];
+        console.log(msg);
+    }());
+
+    (function (who, when) {
+        console.log("I met " + who + " on " + when);
+    }("Joe Black", new Date()));
+
+
+    var result = (function() {
+        return 2 + 2;
+    }());
+    console.log(result);
+
+    var getResult = (function () {
+        var res = 2 + 2;
+        return function () {
+            return res;
+        };
+    }());
+    console.log(getResult());
+
+
+
+    var book = {                         //객체 리터럴(literal)
+        title: 'JavaScript패턴',
+        author: 'Akasha'
+    };
+
+    console.log(book.title); // 객체의 속성 접근
+    console.log(book['title']); //
+
+    var book = {
+        publisher: {
+            name: 'it playstore',
+            address: 'it playground'
+        }
+    };
+    console.log(book.publisher.name); // 객체의 속성 접근
+
+    delete book.publisher.address;  //객체의 속성을 삭제하는 방법
+    console.log(book.publisher); //
+    console.log(book.publisher instanceof Object); //
+    console.log(book.publisher.__proto__ == Object.prototype); //
+</script>
+</body>
+</html>
