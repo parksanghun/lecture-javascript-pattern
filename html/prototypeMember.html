@@ -41,20 +41,6 @@
     }
     console.log(ms) // name
 
-    var global_var = 1;
-    global_novar = 2; //안티패턴
-    (function(){
-        global_fromfunc = 3; //안티패턴
-    }());
-
-    delete global_var;
-    // var로 선언되지 않은 변수는 delete 키워드에 의해 삭제 가능함
-    delete global_novar;
-    delete global_fromfunc;
-
-    console.log(global_var);
-    console.log(global_fromfunc);
-    console.log(global_novar);
 
 </script>
 </body>
