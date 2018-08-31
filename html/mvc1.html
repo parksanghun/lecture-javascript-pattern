@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>MVC:Controller</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+</head>
+<div id="myid"></div>
+<body>
+<script type="text/javascript">
+
+    function Model() {
+    }
+
+    Model.prototype.calculate = function (a, b) {
+        this.sum = a + b;
+        return this.sum;
+    };
+
+    function View() {
+        this.myid = document.getElementById("myid");
+    }
+
+    View.prototype.displayresults = function (a) {
+        this.myid.innerHTML = a;
+    }
+
+    function controller() {
+        this.myModel = new Model();
+        this.myView = new View();
+        this.myView.displayresults(this.myModel.calculate(30, 30));
+    }
+    controller();
+</script>
+</body>
+</html>
+ 
